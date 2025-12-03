@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variedades Veronica - Tienda de Ropa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>👗 Variedades Veronica</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+                <li><a href="https://wa.me/50239509252" class="nav-link" target="_blank">WhatsApp 📱</a></li>
+                <li><a href="admin.html" class="nav-link admin-link">Administrador</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Bienvenido a Variedades Veronica</h2>
+            <p>Encuentra la ropa perfecta para tu estilo</p>
+            <button class="btn-primary" onclick="scrollToSection('catalogo')">Explorar Catálogo</button>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section id="catalogo" class="catalogo">
+        <div class="container">
+            <h2>Nuestro Catálogo</h2>
+            <div class="filtros">
+                <input type="text" id="buscador" placeholder="Buscar productos..." class="buscador">
+                <select id="filtro-categoria" class="filtro">
+                    <option value="">Todas las categorías</option>
+                    <option value="Camisetas">Camisetas</option>
+                    <option value="Pantalones">Pantalones</option>
+                    <option value="Vestidos">Vestidos</option>
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Zapatos">Zapatos</option>
+                </select>
+            </div>
+            <div id="productos-container" class="productos-grid">
+                <!-- Los productos se cargan aquí dinámicamente -->
+            </div>
+            <div id="sin-productos" class="sin-productos" style="display: none;">
+                <p>No hay productos que coincidan con tu búsqueda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de producto -->
+    <div id="producto-modal" class="modal">
+        <div class="modal-content modal-producto">
+            <span class="close" onclick="cerrarModalProducto()">&times;</span>
+            <div class="producto-modal-contenido">
+                <div class="modal-galeria">
+                    <img id="modal-producto-img" src="" alt="" class="modal-producto-img">
+                    <div id="modal-fotos-thumbnails" class="modal-fotos-thumbnails">
+                        <!-- Se generan dinámicamente -->
+                    </div>
+                </div>
+                <div class="modal-producto-info">
+                    <h2 id="modal-producto-nombre"></h2>
+                    <p id="modal-producto-descripcion" class="modal-producto-descripcion"></p>
+                    <p class="modal-producto-precio">Precio: Q<span id="modal-producto-precio"></span></p>
+                    <p class="modal-producto-stock">Stock: <span id="modal-producto-stock"></span></p>
+                    <button class="btn-primary" onclick="contactarPorWhatsApp()">Consultar por WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Variedades Veronica. Todos los derechos reservados.</p>
+            <p>WhatsApp: <a href="https://wa.me/50239509252" style="color: #4ade80; text-decoration: none;">502 3950-9252</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

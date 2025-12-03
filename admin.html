@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Variedades Veronica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+    <!-- Panel de Login (oculto después del login) -->
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>🔐 Acceso Administrador</h2>
+            <form id="login-form" onsubmit="validarLogin(event)">
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" required placeholder="Ingresa tu usuario">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required placeholder="Ingresa tu contraseña">
+                </div>
+                <button type="submit" class="btn-primary">Ingresar</button>
+                <p class="error-message" id="error-message"></p>
+            </form>
+            <p class="back-link"><a href="index.html">← Volver a la tienda</a></p>
+        </div>
+    </div>
+
+    <!-- Panel de Administrador (visible después del login) -->
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <nav class="admin-navbar">
+            <div class="container">
+                <h1>👗 Variedades Veronica - Administrador</h1>
+                <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </nav>
+
+        <div class="container admin-container">
+            <!-- Tabs de navegación -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="cambiarTab('subir')">Subir Producto</button>
+                <button class="tab-btn" onclick="cambiarTab('lista')">Gestionar Productos</button>
+            </div>
+
+            <!-- Tab: Subir Producto -->
+            <div id="tab-subir" class="tab-content active">
+                <h2>Subir Nuevo Producto</h2>
+                <form id="form-producto" onsubmit="agregarProducto(event)" class="form-producto">
+                    <div class="form-group">
+                        <label for="prod-nombre">Nombre del Producto:</label>
+                        <input type="text" id="prod-nombre" required placeholder="Ej: Camiseta azul">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-categoria">Categoría:</label>
+                        <select id="prod-categoria" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Camisetas">Camisetas</option>
+                            <option value="Pantalones">Pantalones</option>
+                            <option value="Vestidos">Vestidos</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Zapatos">Zapatos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-descripcion">Descripción:</label>
+                        <textarea id="prod-descripcion" required placeholder="Describe el producto..." rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-precio">Precio (Q):</label>
+                        <input type="number" id="prod-precio" required placeholder="0.00" step="0.01" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-foto">Foto Principal del Producto:</label>
+                        <input type="file" id="prod-foto" accept="image/*" required>
+                        <small>Formatos soportados: JPG, PNG, GIF</small>
+                        <div id="preview-img" class="preview-img">
+                            <img id="preview" src="" alt="Preview" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-fotos-adicionales">Fotos Adicionales (opcional):</label>
+                        <input type="file" id="prod-fotos-adicionales" accept="image/*" multiple>
+                        <small>Puedes subir hasta 10 fotos adicionales para mostrar diferentes vistas, detalles y estilos de la prenda</small>
+                        <div id="preview-fotos-adicionales" class="preview-fotos-adicionales">
+                            <!-- Se generan dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prod-stock">Stock:</label>
+                        <input type="number" id="prod-stock" required placeholder="0" min="0" value="10">
+                    </div>
+
+                    <button type="submit" class="btn-primary">Subir Producto</button>
+                    <p class="form-message" id="form-message"></p>
+                </form>
+            </div>
+
+            <!-- Tab: Gestionar Productos -->
+            <div id="tab-lista" class="tab-content">
+                <h2>Gestionar Productos</h2>
+                <div class="admin-productos-list">
+                    <div id="admin-productos-container" class="admin-productos-container">
+                        <p>Cargando productos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
